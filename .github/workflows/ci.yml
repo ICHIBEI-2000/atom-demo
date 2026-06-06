@@ -19,11 +19,8 @@ jobs:
           sudo apt update
           sudo apt install -y cmake g++
 
-      - name: Configurer CMake
-        run: cmake -S . -B build
+      - name: Build
+  run: ./scripts/build.sh
 
-      - name: Compiler
-        run: cmake --build build
-
-      - name: Lancer les tests
-        run: cd build && ctest --output-on-failure
+- name: Test
+  run: ./scripts/test.sh
