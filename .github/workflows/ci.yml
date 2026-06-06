@@ -1,0 +1,29 @@
+name: CI Atom Demo
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Recuperer le code
+        uses: actions/checkout@v4
+
+      - name: Installer les dependances
+        run: |
+          sudo apt update
+          sudo apt install -y cmake g++
+
+      - name: Configurer CMake
+        run: cmake -S . -B build
+
+      - name: Compiler
+        run: cmake --build build
+
+      - name: Lancer les tests
+        run: cd build && ctest --output-on-failure
