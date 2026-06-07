@@ -25,7 +25,7 @@ jobs:
       - name: Test
         run: ./scripts/test.sh
 
-              - name: Package
+      - name: Package
         run: ./scripts/package.sh
 
       - name: Upload Artifact
